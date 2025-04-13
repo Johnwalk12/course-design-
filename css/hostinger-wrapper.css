@@ -1,0 +1,70 @@
+/* Hostinger Wrapper Styles */
+
+.lesson-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    min-height: 100px;
+    background: var(--section-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: height var(--transition-normal);
+}
+
+.lesson-wrapper iframe {
+    width: 100%;
+    border: none;
+    overflow: hidden;
+    display: block;
+    transition: height var(--transition-normal);
+}
+
+
+/* Loading State */
+
+.lesson-wrapper.loading {
+    position: relative;
+}
+
+.lesson-wrapper.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+/* Error State */
+
+.lesson-wrapper.error {
+    padding: var(--spacing-lg);
+    text-align: center;
+    color: var(--error-color);
+}
+
+.lesson-wrapper.error i {
+    font-size: var(--font-size-xxlarge);
+    margin-bottom: var(--spacing-md);
+}
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+    .lesson-wrapper {
+        margin-bottom: 1rem;
+    }
+}

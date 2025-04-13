@@ -1,0 +1,9 @@
+# Ignore HTML files
+*.html
+html/
+
+# Keep only CSS and JS files
+!css/
+!js/
+!README.md
+!LICENSE 
