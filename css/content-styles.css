@@ -1,0 +1,282 @@
+/* Content Presentation Styles
+   Modern, interactive styles for learning content
+   Version 1.0.0
+*/
+
+
+/* Vocabulary Cards Enhanced Styles */
+
+.vocabulary-container {
+    perspective: 1000px;
+    padding: var(--spacing-lg);
+}
+
+.vocab-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.vocab-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.vocab-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vocab-card:hover::before {
+    opacity: 1;
+}
+
+.vocab-header {
+    position: relative;
+    padding-bottom: var(--spacing-md);
+}
+
+.vocab-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.vocab-card:hover .vocab-header::after {
+    width: 100%;
+}
+
+.vocab-word {
+    font-size: var(--font-size-xlarge);
+    background: linear-gradient(120deg, var(--primary-color), #FFA500);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Interactive Response Areas */
+
+.response-area {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    transition: all 0.3s ease;
+}
+
+.response-area:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.warm-up-response {
+    width: 100%;
+    min-height: 120px;
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.warm-up-response:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+/* Enhanced Recording Controls */
+
+.response-controls {
+    background: rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.record-response,
+.save-response {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.record-response:hover,
+.save-response:hover {
+    transform: scale(1.1);
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.record-response:active,
+.save-response:active {
+    transform: scale(0.95);
+}
+
+.record-response.recording {
+    animation: pulse 1.5s infinite;
+    background: rgba(255, 0, 0, 0.2);
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+
+/* Phrases Section Enhancement */
+
+.phrase-category {
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.05), rgba(255, 215, 0, 0.02));
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.phrase-item {
+    position: relative;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius-md);
+    transition: all 0.3s ease;
+}
+
+.phrase-item:hover {
+    transform: translateX(8px);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.phrase {
+    color: var(--primary-color);
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-sm);
+}
+
+.usage {
+    color: var(--text-light);
+    font-size: var(--font-size-small);
+    line-height: 1.6;
+}
+
+
+/* Practice Activities Enhancement */
+
+.activity-scenario {
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.05), rgba(0, 0, 0, 0.3));
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+}
+
+.prompt-item {
+    position: relative;
+    padding-left: var(--spacing-xl);
+}
+
+.prompt-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+
+/* Animations */
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+    }
+}
+
+
+/* Transcription Area Enhancement */
+
+.transcription-container {
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.transcription-container::before {
+    content: '🎤';
+    position: absolute;
+    top: -20px;
+    left: var(--spacing-lg);
+    background: var(--background-color);
+    padding: 0 var(--spacing-sm);
+}
+
+.transcription-text {
+    min-height: 60px;
+    padding: var(--spacing-md);
+    color: var(--text-light);
+    font-style: italic;
+}
+
+
+/* Word Count Enhancement */
+
+.word-count {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-small);
+    color: var(--primary-color);
+}
+
+
+/* Accessibility Enhancements */
+
+@media (prefers-reduced-motion: reduce) {
+    .vocab-card,
+    .response-area,
+    .phrase-item {
+        transition: none;
+    }
+}
+
+
+/* High Contrast Mode */
+
+@media (prefers-contrast: high) {
+    .vocab-word {
+        background: none;
+        -webkit-text-fill-color: var(--primary-color);
+    }
+}
