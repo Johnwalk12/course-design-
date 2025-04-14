@@ -283,6 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupCollapsibleActivities();
     setupIframeHeightManagement();
+
+    // Initialize mobile optimizations
+    setupMobileOptimizations();
 });
 
 // Navigation Setup
@@ -460,6 +463,100 @@ function navigateToSection(index) {
         // Smooth scroll to section
         smoothScrollToSection(newSection);
     }, config.transitionDuration);
+}
+
+// Debounce scroll events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Mobile Optimization Functions
+function setupMobileOptimizations() {
+    setupTouchHandling();
+    setupScrollOptimization();
+    setupMobileNavigation();
+}
+
+function setupTouchHandling() {
+    document.addEventListener('touchstart', (e) => {
+        // Store touch start position
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const touchEndTime = Date.now();
+
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+        const deltaTime = touchEndTime - touchStartTime;
+
+        // Check if it's a horizontal swipe
+        if (Math.abs(deltaX) > Math.abs(deltaY) &&
+            Math.abs(deltaX) > config.touchSwipeThreshold &&
+            deltaTime < config.touchSwipeTimeThreshold) {
+
+            if (deltaX < 0 && config.currentSection < config.sections.length - 1) {
+                navigateToSection(config.currentSection + 1);
+            } else if (deltaX > 0 && config.currentSection > 0) {
+                navigateToSection(config.currentSection - 1);
+            }
+        }
+    });
+}
+
+function setupScrollOptimization() {
+    let lastScroll = 0;
+    const scrollHandler = debounce(() => {
+        const currentScroll = window.pageYOffset;
+        const nav = document.querySelector('.lesson-nav');
+
+        if (currentScroll > lastScroll && currentScroll > 60) {
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            nav.style.transform = 'translateY(0)';
+        }
+
+        lastScroll = currentScroll;
+    }, 16);
+
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+}
+
+function setupMobileNavigation() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navList = document.querySelector('.nav-list');
+
+    if (mobileMenuToggle && navList) {
+        mobileMenuToggle.addEventListener('click', () => {
+            const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+            mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+            navList.classList.toggle('active');
+            document.body.style.overflow = isExpanded ? '' : 'hidden';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navList.classList.contains('active') &&
+                !navList.contains(e.target) &&
+                !mobileMenuToggle.contains(e.target)) {
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                navList.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
 }
 
 // Smooth scrolling implementation
@@ -757,17 +854,4 @@ function setupIframeHeightManagement() {
     sendHeight();
     window.addEventListener('load', sendHeight);
     window.addEventListener('resize', debounce(sendHeight, 250));
-}
-
-// Debounce function
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
 }
