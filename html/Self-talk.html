@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/main.css?v=1.0.2">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/hostinger-wrapper.css?v=1.0.2">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/content-styles.css?v=1.0.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/main.css?v=1.0.2&t=202404140326">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/hostinger-wrapper.css?v=1.0.2&t=202404140326">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/content-styles.css?v=1.0.2&t=202404140326">
 
     <!-- Custom JS -->
     <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/js/main.js?v=1.0.2" defer></script>
@@ -36,10 +36,15 @@
         }
 
         // Force reload CSS files
-        document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-            if (link.href.includes('course-design-')) {
-                link.href = addTimestamp(link.href);
-            }
+        window.addEventListener('load', function() {
+            document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+                if (link.href.includes('course-design-')) {
+                    const newHref = addTimestamp(link.href);
+                    if (link.href !== newHref) {
+                        link.href = newHref;
+                    }
+                }
+            });
         });
     </script>
 </head>
