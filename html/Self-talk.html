@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Speaking Course</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/css/main.css?v=1.0.2&t=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/css/hostinger-wrapper.css?v=1.0.2&t=<?php echo time(); ?>">
+
+    <!-- Custom JS -->
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/js/main.js?v=1.0.2" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/js/voice-recording.js?v=1.0.2" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/js/quiz-system.js?v=1.0.2" defer></script>
+
+    <!-- Force Cache Refresh -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Force CSS Reload -->
+    <script>
+        // Add timestamp to force cache refresh
+        function addTimestamp(url) {
+            return url + (url.includes('?') ? '&' : '?') + 't=' + new Date().getTime();
+        }
+
+        // Force reload CSS files
+        document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+            if (link.href.includes('course-design-')) {
+                link.href = addTimestamp(link.href);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="lesson-container">
+        <!-- Navigation Menu -->
+        <nav class="lesson-nav">
+            <div class="nav-container">
+                <button class="mobile-menu-toggle touch-feedback" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#objectives" class="nav-link touch-feedback" data-section="objectives">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Objectives</span>
+                            <div class="progress-indicator">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#video" class="nav-link touch-feedback" data-section="video">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Video</span>
+                            <div class="progress-indicator">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#vocabulary" class="nav-link touch-feedback" data-section="vocabulary">
+                            <i class="fas fa-book"></i>
+                            <span>Vocabulary</span>
+                            <div class="progress-indicator">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#phrases" class="nav-link touch-feedback" data-section="phrases">
+                            <i class="fas fa-quote-right"></i>
+                            <span>Phrases</span>
+                            <div class="progress-indicator">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#quiz" class="nav-link touch-feedback" data-section="quiz">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Quiz</span>
+                            <div class="progress-indicator">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#practice" class="nav-link touch-feedback" data-section="practice">
+                            <i class="fas fa-microphone"></i>
+                            <span>Practice</span>
+                            <div class="progress-indicator">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://super-teacher.net/tutors/john-?ref=JOHN--0jQ-TJMlo" target="_blank" class="nav-link trial-link">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Book a Free Trial</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-indicator"></div>
+        </nav>
+
+        <!-- Lesson Header -->
+        <header class="lesson-header">
+            <div class="header-content">
+                <div>
+                    <h1 class="lesson-title">The Power of Self-Talk</h1>
+                    <p class="lesson-subtitle">Understanding and harnessing your inner voice for personal growth</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Objectives Section -->
+            <section id="objectives" class="section" data-section="objectives">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2>Learning Objectives</h2>
+                </div>
+                <div class="section-content">
+                    <ul class="objectives-list">
+                        <li>Understand the concept and importance of self-talk in daily life</li>
+                        <li>Learn to identify positive and negative self-talk patterns</li>
+                        <li>Develop strategies to transform negative self-talk into positive affirmations</li>
+                        <li>Practice using self-talk techniques to improve performance and emotional regulation</li>
+                    </ul>
+
+                    <div class="warm-up">
+                        <h3>Warm-Up Questions</h3>
+                        <p class="warm-up-intro">Take a moment to reflect on these questions before we begin.</p>
+                        <div class="warm-up-questions">
+                            <div class="warm-up-question">
+                                <label>How often do you talk to yourself, and what kinds of things do you say?</label>
+                                <div class="response-area">
+                                    <textarea class="warm-up-response" placeholder="Type your response here..."></textarea>
+                                    <div class="response-controls">
+                                        <button class="record-response touch-feedback" aria-label="Start/Stop recording">
+                                            <i class="fas fa-microphone"></i>
+                                        </button>
+                                        <button class="save-response touch-feedback" aria-label="Save recording">
+                                            <i class="fas fa-save"></i>
+                                        </button>
+                                        <span class="word-count">0 words</span>
+                                    </div>
+                                    <div class="transcription-container">
+                                        <h4>Live Transcription</h4>
+                                        <div class="transcription-text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Section -->
+            <section id="video" class="section" data-section="video">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h2>Video Lesson</h2>
+                </div>
+                <div class="section-content">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/iNyUmbmQQZg" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-duration">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 5:00</span>
+                        </div>
+                        <div class="video-chapters">
+                            <h3>Chapters</h3>
+                            <ul class="chapter-list">
+                                <li><a href="#" class="touch-feedback" data-time="0">Introduction to Self-Talk</a></li>
+                                <li><a href="#" class="touch-feedback" data-time="60">What is Self-Talk?</a></li>
+                                <li><a href="#" class="touch-feedback" data-time="120">Development of Self-Talk</a></li>
+                                <li><a href="#" class="touch-feedback" data-time="180">Impact of Self-Talk</a></li>
+                                <li><a href="#" class="touch-feedback" data-time="240">Positive vs. Negative Self-Talk</a></li>
+                                <li><a href="#" class="touch-feedback" data-time="300">Conclusion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vocabulary Section -->
+            <section id="vocabulary" class="section" data-section="vocabulary" aria-labelledby="vocabulary-title">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h2 id="vocabulary-title">Key Vocabulary</h2>
+                </div>
+                <div class="section-content">
+                    <div class="vocabulary-intro">
+                        <p>Master these essential vocabulary words to better understand and discuss self-talk concepts.</p>
+                    </div>
+                    <div class="vocabulary-container">
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">self-talk</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of self-talk">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(noun)</span>
+                                <span class="ipa">/self tɔːk/</span>
+                                <span class="phonetic-tip">Break it down: self·TALK</span>
+                            </div>
+                            <p class="definition">The internal dialogue or narration inside your head, sometimes called inner speech</p>
+                            <div class="example-container">
+                                <p class="example">Her positive self-talk helped her overcome her fear of public speaking.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">internalize</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of internalize">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(verb)</span>
+                                <span class="ipa">/ɪnˈtɜːnəlaɪz/</span>
+                                <span class="phonetic-tip">Break it down: in·TER·nuh·lize</span>
+                            </div>
+                            <p class="definition">To make attitudes, behaviors, or beliefs part of your nature</p>
+                            <div class="example-container">
+                                <p class="example">Children gradually internalize their self-talk as they grow older.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">ruminate</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of ruminate">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(verb)</span>
+                                <span class="ipa">/ˈruːmɪneɪt/</span>
+                                <span class="phonetic-tip">Break it down: ROO·muh·nate</span>
+                            </div>
+                            <p class="definition">To think deeply about something repeatedly, often in a negative way</p>
+                            <div class="example-container">
+                                <p class="example">People who ruminate on their problems often experience more intense feelings of depression.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">stigmatize</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of stigmatize">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(verb)</span>
+                                <span class="ipa">/ˈstɪɡmətaɪz/</span>
+                                <span class="phonetic-tip">Break it down: STIG·muh·tize</span>
+                            </div>
+                            <p class="definition">To treat someone or something as socially unacceptable or disgraceful</p>
+                            <div class="example-container">
+                                <p class="example">Some people stigmatize talking to yourself as a sign of mental instability.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">distanced self-talk</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of distanced self-talk">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(noun phrase)</span>
+                                <span class="ipa">/ˈdɪstənst self tɔːk/</span>
+                                <span class="phonetic-tip">Break it down: DIS·tuhnst·self·TALK</span>
+                            </div>
+                            <p class="definition">Talking to yourself as if in conversation with another person, using your name or "you"</p>
+                            <div class="example-container">
+                                <p class="example">Distanced self-talk can be especially beneficial for reducing stress during anxiety-inducing tasks.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">cognitive behavioral therapy</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of cognitive behavioral therapy">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(noun phrase)</span>
+                                <span class="ipa">/ˈkɒɡnətɪv bɪˈheɪvjərəl ˈθerəpi/</span>
+                                <span class="phonetic-tip">Break it down: COG·nuh·tiv·be·HAV·yuh·rul·THER·uh·pee</span>
+                            </div>
+                            <p class="definition">A form of psychological treatment focused on changing negative thought patterns and behaviors</p>
+                            <div class="example-container">
+                                <p class="example">Cognitive behavioral therapy helps people identify and change cycles of negative thoughts.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">inner speech</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of inner speech">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(noun phrase)</span>
+                                <span class="ipa">/ˈɪnə spiːtʃ/</span>
+                                <span class="phonetic-tip">Break it down: IN·ner·SPEECH</span>
+                            </div>
+                            <p class="definition">The silent internal dialogue that occurs in your mind</p>
+                            <div class="example-container">
+                                <p class="example">Most adults experience inner speech rather than speaking out loud to themselves.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">motivational</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of motivational">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(adjective)</span>
+                                <span class="ipa">/ˌməʊtɪˈveɪʃənl/</span>
+                                <span class="phonetic-tip">Break it down: mo·tuh·VAY·shuh·nuhl</span>
+                            </div>
+                            <p class="definition">Designed to inspire or encourage action or effort</p>
+                            <div class="example-container">
+                                <p class="example">Engaging in motivational self-talk has been shown to increase focus and boost self-esteem.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">compassionate</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of compassionate">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(adjective)</span>
+                                <span class="ipa">/kəmˈpæʃənət/</span>
+                                <span class="phonetic-tip">Break it down: kuhm·PASH·uh·nuht</span>
+                            </div>
+                            <p class="definition">Feeling or showing sympathy and concern for others</p>
+                            <div class="example-container">
+                                <p class="example">Cognitive behavioral therapists often teach strategies to replace negative thoughts with more compassionate reflections.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="vocab-card">
+                            <div class="vocab-header">
+                                <h3 class="vocab-word">toxic</h3>
+                                <button class="vocab-audio touch-feedback" aria-label="Listen to pronunciation of toxic">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="vocab-phonetics">
+                                <span class="type">(adjective)</span>
+                                <span class="ipa">/ˈtɒksɪk/</span>
+                                <span class="phonetic-tip">Break it down: TOK·sik</span>
+                            </div>
+                            <p class="definition">Extremely harmful or destructive</p>
+                            <div class="example-container">
+                                <p class="example">When negative self-talk becomes too frequent or excessively negative, it can become toxic.</p>
+                                <button class="example-audio touch-feedback" aria-label="Listen to example sentence">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phrases Section -->
+            <section id="phrases" class="section" data-section="phrases">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <h2>Essential Phrases</h2>
+                </div>
+                <div class="section-content">
+                    <div class="phrases-intro">
+                        <p>Master these key phrases to discuss and practice self-talk effectively.</p>
+                    </div>
+                    <div class="phrases-grid">
+                        <div class="phrase-category">
+                            <h3>Discussing Self-Talk</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <p class="phrase">"I catch myself thinking..."</p>
+                                        <p class="usage">Used to describe becoming aware of your own thoughts</p>
+                                    </div>
+                                    <button class="phrase-audio touch-feedback">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <p class="phrase">"My inner voice tells me..."</p>
+                                        <p class="usage">Used to describe what you're saying to yourself internally</p>
+                                    </div>
+                                    <button class="phrase-audio touch-feedback">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="phrase-category">
+                            <h3>Positive Self-Talk</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <p class="phrase">"I can handle this situation..."</p>
+                                        <p class="usage">Used to build confidence and resilience</p>
+                                    </div>
+                                    <button class="phrase-audio touch-feedback">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <p class="phrase">"I'm making progress, even if it's small..."</p>
+                                        <p class="usage">Used to acknowledge growth and maintain motivation</p>
+                                    </div>
+                                    <button class="phrase-audio touch-feedback">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="phrase-category">
+                            <h3>Distanced Self-Talk</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <p class="phrase">"[Your name], you've prepared well for this..."</p>
+                                        <p class="usage">Used to create psychological distance and reduce stress</p>
+                                    </div>
+                                    <button class="phrase-audio touch-feedback">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="phrase-text">
+                                        <p class="phrase">"What would you say to a friend in this situation?"</p>
+                                        <p class="usage">Used to adopt a more compassionate perspective</p>
+                                    </div>
+                                    <button class="phrase-audio touch-feedback">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Phrases Activity -->
+                    <div class="phrases-activity">
+                        <h3>Practice Activity: Using Self-Talk Phrases</h3>
+                        <div class="activity-scenario">
+                            <h4>Scenario: Job Interview Preparation</h4>
+                            <p>Imagine you have an important job interview tomorrow. Use the phrases we've learned to create a positive self-talk dialogue that helps you prepare mentally.</p>
+
+                            <div class="activity-prompts">
+                                <div class="prompt-item">
+                                    <p class="prompt-question">How would you use self-talk to build confidence before the interview?</p>
+                                    <div class="prompt-example">
+                                        <p class="example-text">Example response using our phrases:</p>
+                                        <div class="example-dialogue">
+                                            <p>"I catch myself thinking about all the ways the interview could go wrong, but then I say to myself..."</p>
+                                            <p>"[Your name], you've prepared well for this. You've researched the company and practiced your responses."</p>
+                                            <p>"I'm making progress, even if it's small. Each interview is a learning experience."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="response-area">
+                                <h4>Your Response</h4>
+                                <p class="response-instruction">Create your own self-talk dialogue using at least three phrases from the lesson.</p>
+                                <textarea class="warm-up-response" placeholder="Type your response here..." rows="6"></textarea>
+                                <div class="response-controls">
+                                    <button class="record-response touch-feedback" aria-label="Start/Stop recording">
+                                        <i class="fas fa-microphone"></i>
+                                    </button>
+                                    <button class="save-response touch-feedback" aria-label="Save recording">
+                                        <i class="fas fa-save"></i>
+                                    </button>
+                                    <span class="word-count">0 words</span>
+                                </div>
+                                <div class="transcription-container">
+                                    <h4>Live Transcription</h4>
+                                    <div class="transcription-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz" class="section" data-section="quiz" aria-labelledby="quiz-title">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h2 id="quiz-title">Knowledge Check</h2>
+                </div>
+                <div class="section-content">
+                    <div class="quiz-container" role="region" aria-label="Quiz">
+                        <div class="quiz-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5" aria-label="Quiz progress">
+                            <div class="progress-text">Question <span class="current-question">1</span> of <span class="total-questions">5</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" aria-hidden="true"></div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question active" role="group" aria-labelledby="question-1" data-explanation="Self-talk is the internal dialogue or narration that occurs in your mind. It's a normal and essential part of human cognition that helps with problem-solving, decision-making, and emotional regulation.">
+                            <h3 id="question-1" class="question-text">What is self-talk?</h3>
+                            <div class="options-container" role="radiogroup" aria-label="Answer options">
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0" data-correct="true">
+                                    <span class="option-text">The internal dialogue or narration inside your head</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">A conversation with another person</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">A form of meditation</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">A sign of mental instability</span>
+                                </label>
+                            </div>
+                            <div class="feedback-message" aria-live="polite"></div>
+                        </div>
+
+                        <div class="quiz-question" role="group" aria-labelledby="question-2" data-explanation="According to research, children's self-talk starts as vocal speech and gradually becomes internalized as they develop. This process is crucial for cognitive development and self-regulation.">
+                            <h3 id="question-2" class="question-text">How does self-talk develop in children according to the video?</h3>
+                            <div class="options-container" role="radiogroup" aria-label="Answer options">
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">It starts as internal dialogue and becomes vocal</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0" data-correct="true">
+                                    <span class="option-text">It starts as vocal speech and becomes internalized</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">It develops simultaneously in both forms</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">It doesn't develop until adolescence</span>
+                                </label>
+                            </div>
+                            <div class="feedback-message" aria-live="polite"></div>
+                        </div>
+
+                        <div class="quiz-question" role="group" aria-labelledby="question-3" data-explanation="Distanced self-talk involves speaking to yourself as if you were talking to another person, often using your name or 'you'. This technique helps create psychological distance and can reduce stress and anxiety.">
+                            <h3 id="question-3" class="question-text">What is distanced self-talk?</h3>
+                            <div class="options-container" role="radiogroup" aria-label="Answer options">
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">Talking to yourself in a quiet voice</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">Talking to yourself while walking</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0" data-correct="true">
+                                    <span class="option-text">Talking to yourself as if in conversation with another person</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">Talking to yourself in a different language</span>
+                                </label>
+                            </div>
+                            <div class="feedback-message" aria-live="polite"></div>
+                        </div>
+
+                        <div class="quiz-question" role="group" aria-labelledby="question-4" data-explanation="Negative self-talk can lead to increased anxiety and depression. It's important to recognize and transform negative self-talk patterns to maintain good mental health.">
+                            <h3 id="question-4" class="question-text">What can negative self-talk lead to according to the video?</h3>
+                            <div class="options-container" role="radiogroup" aria-label="Answer options">
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">Improved performance</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">Better problem-solving skills</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0" data-correct="true">
+                                    <span class="option-text">Anxiety and depression</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">Enhanced creativity</span>
+                                </label>
+                            </div>
+                            <div class="feedback-message" aria-live="polite"></div>
+                        </div>
+
+                        <div class="quiz-question" role="group" aria-labelledby="question-5" data-explanation="Positive self-talk has been shown to improve focus and accuracy in various tasks. It helps maintain motivation and confidence during challenging situations.">
+                            <h3 id="question-5" class="question-text">What is one benefit of positive self-talk mentioned in the video?</h3>
+                            <div class="options-container" role="radiogroup" aria-label="Answer options">
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">It helps you sleep better</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0" data-correct="true">
+                                    <span class="option-text">It increases focus and accuracy</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">It improves memory</span>
+                                </label>
+                                <label class="quiz-option touch-feedback" role="radio" tabindex="0">
+                                    <span class="option-text">It makes you more creative</span>
+                                </label>
+                            </div>
+                            <div class="feedback-message" aria-live="polite"></div>
+                        </div>
+
+                        <div class="quiz-navigation" role="navigation" aria-label="Quiz navigation">
+                            <button class="prev-question" aria-label="Previous question" disabled>
+                                <i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+                            </button>
+                            <button class="next-question" aria-label="Next question">
+                                Next <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        <div class="quiz-results" hidden>
+                            <div class="quiz-score"></div>
+                            <div class="quiz-feedback">
+                                <h3>Quiz Complete!</h3>
+                                <p>Great job! You've completed the knowledge check on self-talk.</p>
+                            </div>
+                            <button class="reset-quiz" aria-label="Restart quiz">
+                                <i class="fas fa-redo"></i> Try Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Practice Section -->
+            <section id="speaking-practice" class="section" aria-labelledby="speaking-practice-title">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h2 id="speaking-practice-title">Speaking Practice</h2>
+                </div>
+
+                <div class="practice-container">
+                    <div class="speaking-prompt-container">
+                        <div class="speaking-topic">
+                            <h3>Activity 1: Self-Talk Awareness</h3>
+                            <p>Describe a recent situation where you noticed your self-talk. What were you saying to yourself? Was it positive or negative? How did it affect your emotions and actions?</p>
+                        </div>
+
+                        <div class="speaking-guidelines">
+                            <h4>Key Points to Address:</h4>
+                            <ul>
+                                <li>The specific situation you were in</li>
+                                <li>The exact thoughts or phrases you said to yourself</li>
+                                <li>How your self-talk influenced your feelings and behavior</li>
+                                <li>What you might say differently next time</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="response-area">
+                        <textarea class="warm-up-response" placeholder="Type your response here..."></textarea>
+                        <div class="response-controls">
+                            <button class="record-response touch-feedback" aria-label="Start/Stop recording">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button class="save-response touch-feedback" aria-label="Save recording">
+                                <i class="fas fa-save"></i>
+                            </button>
+                            <span class="word-count">0 words</span>
+                        </div>
+                        <div class="transcription-container">
+                            <h4>Live Transcription</h4>
+                            <div class="transcription-text"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="practice-container collapsible">
+                    <div class="activity-header" tabindex="0" role="button" aria-expanded="false">
+                        <h3>Activity 2: Transforming Negative Self-Talk</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="speaking-prompt-container">
+                            <div class="speaking-topic">
+                                <p>Practice transforming these negative self-talk statements into positive ones. Explain your thought process as you make the transformation.</p>
+                            </div>
+
+                            <div class="speaking-guidelines">
+                                <h4>Negative Statements to Transform:</h4>
+                                <ul>
+                                    <li>"I can't do anything right."</li>
+                                    <li>"I'm not good enough for this job."</li>
+                                    <li>"Everyone will think I'm stupid if I make a mistake."</li>
+                                    <li>"I'll never be able to learn this."</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="response-area">
+                            <textarea class="warm-up-response" placeholder="Type your response here..."></textarea>
+                            <div class="response-controls">
+                                <button class="record-response touch-feedback" aria-label="Start/Stop recording">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button class="save-response touch-feedback" aria-label="Save recording">
+                                    <i class="fas fa-save"></i>
+                                </button>
+                                <span class="word-count">0 words</span>
+                            </div>
+                            <div class="transcription-container">
+                                <h4>Live Transcription</h4>
+                                <div class="transcription-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="practice-container collapsible">
+                    <div class="activity-header" tabindex="0" role="button" aria-expanded="false">
+                        <h3>Activity 3: Distanced Self-Talk Practice</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="speaking-prompt-container">
+                            <div class="speaking-topic">
+                                <p>Imagine you're facing a challenging situation (like giving a presentation or taking an important exam). Practice using distanced self-talk to help yourself prepare and stay calm.</p>
+                            </div>
+
+                            <div class="speaking-guidelines">
+                                <h4>Steps to Follow:</h4>
+                                <ul>
+                                    <li>Describe the challenging situation you're imagining</li>
+                                    <li>Use your name or "you" to talk to yourself</li>
+                                    <li>Provide encouragement and practical advice</li>
+                                    <li>Explain how this distanced perspective helps you</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="response-area">
+                            <textarea class="warm-up-response" placeholder="Type your response here..."></textarea>
+                            <div class="response-controls">
+                                <button class="record-response touch-feedback" aria-label="Start/Stop recording">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button class="save-response touch-feedback" aria-label="Save recording">
+                                    <i class="fas fa-save"></i>
+                                </button>
+                                <span class="word-count">0 words</span>
+                            </div>
+                            <div class="transcription-container">
+                                <h4>Live Transcription</h4>
+                                <div class="transcription-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Coaching Guide Section -->
+            <section id="coaching-guide" class="section coaching-section premium-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h2>Unlock Premium 1-on-1 Coaching</h2>
+                </div>
+                <div class="section-content">
+                    <div class="coach-profile">
+                        <div class="coach-info">
+                            <div class="premium-badge">
+                                <i class="fas fa-star"></i>
+                                <span> Experience</span>
+                            </div>
+                            <h3>Transform Your English with John Walker</h3>
+                            <p class="coach-description">As a certified English coach with over 5 years of success stories, I'm here to fast-track your English fluency journey. My coaching program offers personalized attention and proven methods that have helped hundreds of students
+                                achieve their language goals.</p>
+                            <div class="benefits-grid">
+                                <div class="benefit-item">
+                                    <i class="fas fa-rocket"></i>
+                                    <h4>Accelerated Learning</h4>
+                                    <p>Progress 3x faster than self-study</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <h4>Customized Curriculum</h4>
+                                    <p>Tailored to your goals and pace</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-comments"></i>
+                                    <h4>Real Conversations</h4>
+                                    <p>Practice with a native speaker</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h4>Progress Tracking</h4>
+                                    <p>Regular feedback and assessments</p>
+                                </div>
+                            </div>
+                            <div class="premium-offer">
+                                <div class="offer-badge">Special Discount!</div>
+                                <h4>40-Minute Trial Session</h4>
+                                <div class="price-comparison">
+                                    <span class="original-price">Regular Price: $15</span>
+                                    <span class="special-price">Special Offer: Only $1!</span>
+                                </div>
+                                <ul class="premium-features">
+                                    <li><i class="fas fa-check-circle"></i> 40-minute focused coaching session</li>
+                                    <li><i class="fas fa-check-circle"></i> Personalized learning assessment</li>
+                                    <li><i class="fas fa-check-circle"></i> Custom study plan creation</li>
+                                    <li><i class="fas fa-check-circle"></i> Starter learning materials pack</li>
+                                    <li><i class="fas fa-check-circle"></i> 93% savings off regular price!</li>
+                                </ul>
+                                <div class="coaching-cta">
+                                    <a href="https://super-teacher.net/tutors/john-?ref=JOHN--0jQ-TJMlo" target="_blank" class="book-coaching-btn touch-feedback premium-btn">
+                                        <i class="fas fa-calendar-check"></i> Get Your $1 Trial Session Now!
+                                        <span class="btn-subtitle">Save $14 Today - Limited Time Only!</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <button id="prev-section" class="nav-button touch-feedback" disabled>
+                <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button id="next-section" class="nav-button touch-feedback">
+                Next <i class="fas fa-arrow-right"></i>   
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="lesson-footer">
+        <div class="footer-content">
+            <p>Designed by John Walker</p>
+        </div>
+    </footer>
+
+    <!-- Error Handling Template -->
+    <template id="error-template">
+        <div class="error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            <div>
+                <p class="error-text"></p>
+                <button class="retry-button touch-feedback">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Fallback Content Template -->
+    <template id="fallback-template">
+        <div class="fallback-content">
+            <h3><i class="fas fa-info-circle"></i> Content Unavailable</h3>
+            <p class="fallback-text"></p>
+        </div>
+    </template>
+</body>
+
+</html>
