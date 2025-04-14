@@ -14,37 +14,89 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/main.css?v=1.0.2&t=202404140326">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/hostinger-wrapper.css?v=1.0.2&t=202404140326">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/content-styles.css?v=1.0.2&t=202404140326">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@ec331d5d0675255535904acb47d9677963486360/css/main.css" onerror="console.error('Failed to load main.css')" onload="console.log('main.css loaded successfully')">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@ec331d5d0675255535904acb47d9677963486360/css/hostinger-wrapper.css" onerror="console.error('Failed to load hostinger-wrapper.css')" onload="console.log('hostinger-wrapper.css loaded successfully')">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@ec331d5d0675255535904acb47d9677963486360/css/content-styles.css" onerror="console.error('Failed to load content-styles.css')" onload="console.log('content-styles.css loaded successfully')">
+
+    <!-- CSS Loading Debug -->
+    <script>
+        // Debug CSS loading
+        window.addEventListener('load', function() {
+            console.log('Checking CSS files loading status...');
+            document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+                console.log(`CSS file ${link.href}:`,
+                    link.sheet ? 'Loaded successfully' : 'Failed to load');
+
+                // Check for any CSS conflicts
+                if (link.sheet) {
+                    try {
+                        const rules = link.sheet.cssRules;
+                        console.log(`${link.href} has ${rules.length} rules`);
+                    } catch (e) {
+                        console.error(`Cannot read rules from ${link.href}:`, e);
+                    }
+                }
+            });
+        });
+
+        // Monitor CSS application
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'style' ||
+                    mutation.attributeName === 'class') {
+                    console.log('Style change detected:', mutation.target);
+                }
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            observer.observe(document.body, {
+                attributes: true,
+                subtree: true,
+                attributeFilter: ['style', 'class']
+            });
+        });
+    </script>
 
     <!-- Custom JS -->
-    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/js/main.js?v=1.0.2" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/js/voice-recording.js?v=1.0.2" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/js/quiz-system.js?v=1.0.2" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@ec331d5d0675255535904acb47d9677963486360/js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@ec331d5d0675255535904acb47d9677963486360/js/voice-recording.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@ec331d5d0675255535904acb47d9677963486360/js/quiz-system.js" defer></script>
 
     <!-- Force Cache Refresh -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <!-- Force CSS Reload -->
+    <!-- Alternative CSS Loading -->
     <script>
-        // Add timestamp to force cache refresh
-        function addTimestamp(url) {
-            return url + '&t=' + new Date().getTime();
+        function loadCSS(url) {
+            return new Promise((resolve, reject) => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = url;
+
+                link.onload = () => resolve();
+                link.onerror = () => reject();
+
+                document.head.appendChild(link);
+            });
         }
 
-        // Force reload CSS files
-        window.addEventListener('load', function() {
-            document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-                if (link.href.includes('course-design-')) {
-                    const newHref = addTimestamp(link.href);
-                    if (link.href !== newHref) {
-                        link.href = newHref;
+        // Fallback CSS loading
+        window.addEventListener('load', async function() {
+            const cssFiles = document.querySelectorAll('link[rel="stylesheet"]');
+            for (const css of cssFiles) {
+                if (!css.sheet && css.href.includes('course-design-')) {
+                    console.log(`Attempting to reload ${css.href}`);
+                    try {
+                        await loadCSS(css.href + '?reload=' + new Date().getTime());
+                        console.log(`Reloaded ${css.href} successfully`);
+                    } catch (e) {
+                        console.error(`Failed to reload ${css.href}`);
                     }
                 }
-            });
+            }
         });
     </script>
 </head>
