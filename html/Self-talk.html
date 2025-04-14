@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/css/main.css?v=1.0.2&t=<?php echo time(); ?>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/css/hostinger-wrapper.css?v=1.0.2&t=<?php echo time(); ?>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/css/content-styles.css?v=1.0.0&t=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/main.css?v=1.0.2">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/hostinger-wrapper.css?v=1.0.2">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/css/content-styles.css?v=1.0.1">
 
     <!-- Custom JS -->
-    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/js/main.js?v=1.0.2" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/js/voice-recording.js?v=1.0.2" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@main/js/quiz-system.js?v=1.0.2" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/js/main.js?v=1.0.2" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/js/voice-recording.js?v=1.0.2" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/Johnwalk12/course-design-@latest/js/quiz-system.js?v=1.0.2" defer></script>
 
     <!-- Force Cache Refresh -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -32,7 +32,7 @@
     <script>
         // Add timestamp to force cache refresh
         function addTimestamp(url) {
-            return url + (url.includes('?') ? '&' : '?') + 't=' + new Date().getTime();
+            return url + '&t=' + new Date().getTime();
         }
 
         // Force reload CSS files
