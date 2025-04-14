@@ -448,19 +448,20 @@ body {
 /* Responsive Design */
 
 @media (max-width: 768px) {
-    .lesson-container {
-        padding: var(--spacing-md);
-    }
+    /* Navigation */
     .nav-list {
         position: fixed;
         top: 60px;
         left: -100%;
-        width: 80%;
-        height: calc(100vh - 60px);
+        width: 85%;
+        height: 100vh;
         background: var(--background-color);
-        transition: left 0.3s ease;
+        transition: all 0.3s ease;
         overflow-y: auto;
         padding: 1rem;
+        flex-direction: column;
+        z-index: var(--z-index-nav);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
     }
     .nav-list.active {
         left: 0;
@@ -468,44 +469,153 @@ body {
     .nav-item {
         width: 100%;
         margin: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-link {
+        width: 100%;
+        padding: 1rem;
+        justify-content: flex-start;
     }
     .mobile-menu-toggle {
         display: block;
+        padding: 0.8rem;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        background: none;
+        border: none;
+        cursor: pointer;
     }
-    .vocabulary-container {
-        grid-template-columns: 1fr;
-    }
-    .benefits-grid {
-        grid-template-columns: 1fr;
+    /* Content Layout */
+    .lesson-container {
+        padding: 0.5rem;
+        width: 100%;
+        overflow-x: hidden;
     }
     .section {
-        width: calc(100% - 20px);
-        padding: var(--section-padding-mobile);
-        margin: 0.5rem auto;
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 1rem;
+        border-radius: var(--border-radius-md);
     }
     .section-content {
-        padding: var(--section-padding-mobile);
+        padding: 1rem;
     }
-    .vocabulary-container,
-    .phrases-grid {
+    /* Typography */
+    p,
+    .lesson-subtitle,
+    .warm-up-intro {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    /* Vocabulary Cards */
+    .vocabulary-container {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0.5rem;
     }
-    h1 {
+    .vocab-card {
+        margin: 0.5rem 0;
+        padding: 1rem;
+    }
+    .vocab-header {
+        flex-wrap: wrap;
+    }
+    .vocab-word {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+    /* Quiz Options */
+    .quiz-option {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        font-size: 16px;
+    }
+    /* Practice Section */
+    .practice-container {
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+    .response-area {
+        padding: 0.8rem;
+    }
+    .response-controls {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    /* Headers */
+    h1.lesson-title {
         font-size: 1.5rem;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
     }
     h2 {
         font-size: 1.3rem;
+        line-height: 1.3;
     }
     h3 {
         font-size: 1.1rem;
+        line-height: 1.3;
     }
+    /* Fix content overflow */
+    .section-content {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+    /* Improve touch targets */
     button,
     .nav-link,
-    .quiz-option {
+    .quiz-option,
+    .vocab-audio {
         min-height: 44px;
+        min-width: 44px;
         padding: 0.8rem;
+        touch-action: manipulation;
+    }
+    /* Fix scrolling issues */
+    body.nav-open {
+        overflow: hidden;
+    }
+    /* Improve spacing */
+    .section+.section {
+        margin-top: 1rem;
+    }
+}
+
+
+/* Additional mobile optimizations */
+
+@media (max-width: 480px) {
+    .lesson-container {
+        padding: 0.3rem;
+    }
+    .section {
+        padding: 0.8rem;
+    }
+    .vocab-card,
+    .quiz-option,
+    .practice-container {
+        padding: 0.8rem;
+    }
+    .response-controls {
+        justify-content: center;
+    }
+}
+
+
+/* Prevent horizontal scroll */
+
+@media (max-width: 768px) {
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
 

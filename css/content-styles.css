@@ -699,3 +699,134 @@
     background: rgba(0, 0, 0, 0.3);
     color: var(--primary-color);
 }
+
+
+/* Mobile Optimizations */
+
+@media (max-width: 768px) {
+    /* Content Sections */
+    .section-content {
+        padding: 1rem;
+        margin: 0;
+    }
+    /* Vocabulary Cards */
+    .vocabulary-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+        perspective: none;
+    }
+    .vocab-card {
+        margin: 0.5rem 0;
+        padding: 1rem;
+        transform: none !important;
+        box-shadow: var(--shadow-sm);
+    }
+    .vocab-card:hover {
+        transform: none !important;
+    }
+    /* Phrases Section */
+    .phrases-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .phrase-item {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    .phrase-item:hover {
+        transform: none;
+    }
+    /* Practice Activities */
+    .practice-container {
+        padding: 1rem;
+        margin: 0.8rem 0;
+    }
+    .activity-header {
+        padding: 0.8rem;
+    }
+    .activity-content {
+        padding: 0.8rem;
+    }
+    /* Response Areas */
+    .response-area {
+        padding: 1rem;
+        margin: 0.8rem 0;
+    }
+    .warm-up-response {
+        min-height: 100px;
+        padding: 0.8rem;
+        font-size: 16px;
+    }
+    /* Recording Controls */
+    .response-controls {
+        padding: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    .record-response,
+    .save-response {
+        width: 44px;
+        height: 44px;
+    }
+    /* Fix text wrapping */
+    .phrase,
+    .usage,
+    .definition,
+    .example {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    /* Improve readability */
+    .vocab-phonetics {
+        font-size: 0.85rem;
+        margin: 0.5rem 0;
+    }
+    .example-container {
+        margin: 0.8rem 0;
+    }
+    /* Navigation */
+    .navigation-buttons {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem);
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 25px;
+        padding: 0.8rem;
+    }
+}
+
+
+/* Small mobile devices */
+
+@media (max-width: 480px) {
+    .vocab-card,
+    .phrase-item,
+    .practice-container {
+        margin: 0.5rem 0;
+        padding: 0.8rem;
+    }
+    .navigation-buttons {
+        width: calc(100% - 1rem);
+        padding: 0.5rem;
+    }
+}
+
+
+/* Prevent animations on mobile */
+
+@media (max-width: 768px) {
+    .vocab-card,
+    .phrase-item,
+    .response-area,
+    .section {
+        transition: none !important;
+        transform: none !important;
+    }
+}
