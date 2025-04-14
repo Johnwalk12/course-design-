@@ -89,33 +89,43 @@
 }
 
 
-/* Premium Vocabulary Cards */
+/* Vocabulary Section Enhancements */
 
 .vocabulary-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
-    padding: 1rem 0;
+    padding: 1.5rem;
 }
 
 .vocab-card {
     background: var(--dark-gradient);
     border: 1px solid rgba(255, 215, 0, 0.1);
-    border-radius: 16px;
-    padding: 0;
-    position: relative;
-    transition: all 0.3s ease;
+    border-radius: var(--border-radius);
     overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.vocab-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
 }
 
 .vocab-header {
-    padding: 1.5rem;
+    padding: 1.2rem;
     background: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.vocab-header:hover {
+    background: rgba(255, 215, 0, 0.1);
 }
 
 .vocab-word-container {
@@ -125,43 +135,175 @@
 }
 
 .vocab-word {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--primary-color);
     margin: 0;
 }
 
 .vocab-type {
+    font-size: 0.85rem;
     color: var(--text-muted);
-    font-size: 0.9rem;
     padding: 0.2rem 0.8rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
 }
 
 .vocab-content {
-    padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 0, 0, 0.1);
 }
 
-.vocab-content.expanded {
-    padding: 1.5rem;
+.vocab-card.expanded .vocab-content {
     max-height: 500px;
 }
 
-.vocab-definition {
-    margin-bottom: 1rem;
-    line-height: 1.6;
+.vocab-details {
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
 }
 
-.vocab-example {
+.vocab-card.expanded .vocab-details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vocab-phonetics {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.vocab-definition {
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.example-container {
     background: rgba(0, 0, 0, 0.2);
     padding: 1rem;
     border-radius: 8px;
-    font-style: italic;
     margin-top: 1rem;
+}
+
+.example {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.vocab-controls {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vocab-audio {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.vocab-audio:hover {
+    background: var(--primary-color);
+    color: var(--bg-darker);
+}
+
+
+/* Expand/Collapse Indicator */
+
+.vocab-header::after {
+    content: '▼';
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.vocab-card.expanded .vocab-header::after {
+    transform: rotate(180deg);
+}
+
+
+/* Initial States */
+
+.vocab-card:nth-child(1) .vocab-content,
+.vocab-card:nth-child(2) .vocab-content,
+.vocab-card:nth-child(3) .vocab-content {
+    max-height: 500px;
+}
+
+.vocab-card:nth-child(1) .vocab-details,
+.vocab-card:nth-child(2) .vocab-details,
+.vocab-card:nth-child(3) .vocab-details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vocab-card:nth-child(1),
+.vocab-card:nth-child(2),
+.vocab-card:nth-child(3) {
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+
+/* Mobile Optimizations */
+
+@media (max-width: 768px) {
+    .vocabulary-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .vocab-header {
+        padding: 1rem;
+    }
+    .vocab-word {
+        font-size: 1.1rem;
+    }
+    .vocab-details {
+        padding: 1.2rem;
+    }
+    .vocab-card:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+/* Touch Interactions */
+
+@media (hover: none) {
+    .vocab-header {
+        -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-card:active {
+        transform: scale(0.98);
+    }
+}
+
+
+/* High-end Display Optimizations */
+
+@media (min-width: 1440px) {
+    .vocabulary-container {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
 }
 
 
@@ -314,22 +456,6 @@
 @media (max-width: 768px) {
     .section-content {
         padding: 1rem;
-    }
-    .vocabulary-container {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    .vocab-card {
-        margin-bottom: 1rem;
-    }
-    .vocab-header {
-        padding: 1.2rem;
-    }
-    .vocab-word {
-        font-size: 1.2rem;
-    }
-    .vocab-content.expanded {
-        padding: 1.2rem;
     }
     .phrases-grid {
         grid-template-columns: 1fr;
@@ -600,5 +726,384 @@
         max-width: 80ch;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+
+/* Quiz Section Enhancements */
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--dark-gradient);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.quiz-progress {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+}
+
+.quiz-question {
+    background: var(--dark-gradient);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all var(--transition-speed);
+}
+
+.question-text {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    max-width: 100%;
+}
+
+.options-container {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.quiz-option {
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: var(--border-radius);
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+}
+
+.quiz-option:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.option-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-left: 1rem;
+    flex: 1;
+}
+
+.quiz-option.selected {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.quiz-option.selected .option-text {
+    color: var(--bg-darker);
+}
+
+.feedback-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+/* Quiz Navigation */
+
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+}
+
+
+/* Mobile Optimizations for Quiz */
+
+@media (max-width: 768px) {
+    .quiz-container {
+        padding: 1rem;
+    }
+    .quiz-question {
+        padding: 1.5rem;
+    }
+    .question-text {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .quiz-option {
+        padding: 1rem;
+        min-height: 50px;
+    }
+    .option-text {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* Ensure text doesn't break awkwardly */
+
+.quiz-question,
+.quiz-option {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: none;
+}
+
+
+/* Activity Sections Enhancement */
+
+.activity-section {
+    background: var(--dark-gradient);
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.activity-header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.activity-title {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.activity-subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+/* Instructions Layout */
+
+.instructions-container {
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.instructions-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.instruction-steps {
+    display: grid;
+    gap: 1rem;
+    counter-reset: step;
+}
+
+.instruction-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.instruction-step::before {
+    counter-increment: step;
+    content: counter(step);
+    background: var(--primary-color);
+    color: var(--bg-darker);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.instruction-content {
+    flex: 1;
+}
+
+
+/* Sample Response Section */
+
+.sample-response {
+    background: rgba(255, 215, 0, 0.05);
+    border-left: 3px solid var(--primary-color);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.sample-response-header {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sample-response-content {
+    color: var(--text-light);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+
+/* Practice Activities */
+
+.practice-activity {
+    padding: 1.5rem;
+}
+
+.scenario-container {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.scenario-title {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.scenario-description {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.key-points {
+    display: grid;
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.key-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: var(--border-radius);
+}
+
+.key-point i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+
+/* Response Area Enhancement */
+
+.response-section {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.response-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.response-title {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.word-count {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.response-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.response-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+
+/* Mobile Optimizations */
+
+@media (max-width: 768px) {
+    .activity-header {
+        padding: 1.2rem;
+    }
+    .activity-title {
+        font-size: 1.2rem;
+    }
+    .instructions-container {
+        padding: 1rem;
+    }
+    .instruction-step {
+        padding: 0.8rem;
+    }
+    .sample-response {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    .practice-activity {
+        padding: 1rem;
+    }
+    .scenario-container {
+        padding: 1rem;
+    }
+    .response-section {
+        padding: 1rem;
+    }
+}
+
+
+/* Touch Interactions */
+
+@media (hover: none) {
+    .instruction-step:active,
+    .key-point:active {
+        transform: scale(0.99);
     }
 }

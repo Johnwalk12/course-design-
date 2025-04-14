@@ -179,6 +179,63 @@ const speechSystem = {
     }
 };
 
+// Vocabulary Cards System
+const VocabularySystem = {
+    init() {
+        this.setupVocabCards();
+        this.setupInitialStates();
+    },
+
+    setupVocabCards() {
+        document.querySelectorAll('.vocab-card').forEach((card, index) => {
+            const header = card.querySelector('.vocab-header');
+
+            if (header) {
+                header.addEventListener('click', () => this.toggleCard(card));
+                header.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.toggleCard(card);
+                    }
+                });
+            }
+        });
+    },
+
+    setupInitialStates() {
+        // First three cards are expanded by default
+        document.querySelectorAll('.vocab-card').forEach((card, index) => {
+            if (index < 3) {
+                card.classList.add('expanded');
+            }
+        });
+    },
+
+    toggleCard(card) {
+        const isExpanded = card.classList.contains('expanded');
+        const content = card.querySelector('.vocab-content');
+        const details = card.querySelector('.vocab-details');
+
+        if (!isExpanded) {
+            // Expand
+            card.classList.add('expanded');
+            content.style.maxHeight = `${content.scrollHeight}px`;
+            details.style.opacity = '1';
+            details.style.transform = 'translateY(0)';
+        } else {
+            // Collapse
+            card.classList.remove('expanded');
+            content.style.maxHeight = '0';
+            details.style.opacity = '0';
+            details.style.transform = 'translateY(10px)';
+        }
+
+        // Add animation class
+        card.classList.add('animating');
+        setTimeout(() => card.classList.remove('animating'), 300);
+    }
+};
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize DOM elements
@@ -286,6 +343,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize mobile optimizations
     setupMobileOptimizations();
+
+    // Initialize Vocabulary System
+    VocabularySystem.init();
 });
 
 // Navigation Setup
